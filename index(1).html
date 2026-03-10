@@ -1,0 +1,208 @@
+<!DOCTYPE html><html lang="en">
+<head><meta charset="UTF-8">
+<meta name="google-site-verification" content="TUvPv_6YNR7KKLEkL8w2YNZ1ureXOfN29L3DBiaKQgE" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Abhyank Restaurant</title><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"><style>
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins;}
+
+body{
+background:#0b0b0b;
+color:white;
+scroll-behavior:smooth;
+}
+
+header{
+position:fixed;
+top:0;
+width:100%;
+background:black;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 40px;
+z-index:1000;
+}
+
+.logo{
+font-size:28px;
+color:#d4af37;
+font-family:'Playfair Display';
+}
+
+nav a{
+color:white;
+margin-left:20px;
+text-decoration:none;
+}
+
+nav a:hover{color:#d4af37;}
+
+.hero{
+height:100vh;
+background:url("https://images.unsplash.com/photo-1600891964599-f61ba0e24092") center/cover;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+}
+
+.hero h1{
+font-size:60px;
+font-family:'Playfair Display';
+}
+
+.btn{
+margin-top:20px;
+padding:12px 30px;
+background:#d4af37;
+border:none;
+cursor:pointer;
+font-weight:bold;
+}
+
+section{
+padding:90px 10%;
+}
+
+.title{
+text-align:center;
+font-size:36px;
+margin-bottom:40px;
+font-family:'Playfair Display';
+color:#d4af37;
+}
+
+.menu{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:25px;
+}
+
+.card{
+background:#111;
+padding:20px;
+border-radius:10px;
+transition:0.3s;
+}
+
+.card:hover{transform:translateY(-6px);}
+
+.card img{
+width:100%;
+height:160px;
+object-fit:cover;
+border-radius:10px;
+}
+
+.price{color:#d4af37;}
+
+.form{
+max-width:450px;
+margin:auto;
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+.form input,.form textarea{
+padding:12px;
+border:none;
+border-radius:5px;
+}
+
+footer{
+background:#111;
+padding:25px;
+text-align:center;
+margin-top:40px;
+}
+
+.success{
+text-align:center;
+margin-top:10px;
+color:#4CAF50;
+display:none;
+}
+
+</style></head><body><header>
+<div class="logo">Abhyank</div><nav>
+<a href="#menu">Menu</a>
+<a href="#reservation">Reservation</a>
+<a href="#contact">Contact</a>
+</nav>
+</header><section class="hero">
+<div>
+<h1>Abhyank Restaurant</h1>
+<p>Luxury Dining Experience</p><button class="btn" onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">
+Explore Menu
+</button></div>
+</section><section id="menu"><h2 class="title">Popular Dishes</h2><div class="menu"><div class="card">
+<img src="https://images.unsplash.com/photo-1604908176997-4313f02e3c37">
+<h3>Butter Masala Dosa</h3>
+<p class="price">₹120</p>
+</div><div class="card">
+<img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398">
+<h3>Chicken Pakora</h3>
+<p class="price">₹130</p>
+</div><div class="card">
+<img src="https://images.unsplash.com/photo-1601050690597-df0568f70950">
+<h3>Pav Bhaji</h3>
+<p class="price">₹120</p>
+</div><div class="card">
+<img src="https://images.unsplash.com/photo-1559847844-d9d2bc807d82">
+<h3>Chicken Tikka Sandwich</h3>
+<p class="price">₹130</p>
+</div><div class="card">
+<img src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d">
+<h3>Mutton Pepper Fry</h3>
+<p class="price">₹299</p>
+</div><div class="card">
+<img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb">
+<h3>Pastry</h3>
+<p class="price">₹60</p>
+</div></div>
+</section><section id="reservation"><h2 class="title">Reserve a Table</h2><div class="form"><input id="name" placeholder="Your Name"><input id="phone" type="tel" placeholder="Phone Number"><input id="date" type="date"><textarea id="note" placeholder="Special Request"></textarea><button class="btn" onclick="submitReservation()">Reserve Table</button>
+
+<p class="success" id="successMsg">
+Reservation request sent successfully!
+</p></div></section><section id="contact">
+<h2 class="title">Contact Us</h2>
+<p style="text-align:center;">Phone: 8509585120</p>
+</section><footer>
+© 2026 Abhyank Restaurant
+</footer><iframe name="hiddenFrame" style="display:none;"></iframe><script>
+
+function submitReservation(){
+
+let name=document.getElementById("name").value
+let phone=document.getElementById("phone").value
+let date=document.getElementById("date").value
+let note=document.getElementById("note").value
+
+if(!name || !phone || !date){
+alert("Please fill all details")
+return
+}
+
+let url="https://script.google.com/macros/s/AKfycbzUQH0fFDCHYhbhoB7Ey3uoRVQmjzPwM1ACezGqjtKYWNEKLfLAyKjZuGoZUNocDLut/exec"
+
+let finalURL =
+url +
+"?name=" + encodeURIComponent(name) +
+"&phone=" + encodeURIComponent(phone) +
+"&date=" + encodeURIComponent(date) +
+"&note=" + encodeURIComponent(note)
+
+window.open(finalURL,"hiddenFrame")
+
+document.getElementById("successMsg").style.display="block"
+
+document.getElementById("name").value=""
+document.getElementById("phone").value=""
+document.getElementById("date").value=""
+document.getElementById("note").value=""
+
+}
+
+</script></body>
+</html>
